@@ -13,7 +13,9 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
     <beans>
 
         <!--        mvc注解驱动-->
-        <mvc:annotation-driven/>
+        <mvc:annotation-driven conversion-service="conversionService"/>
+        <!--开放js资源的访问-->
+        <mvc:resources mapping="/js/**" location="/js/"/>
 
         <mvc:default-servlet-handler/>
 
