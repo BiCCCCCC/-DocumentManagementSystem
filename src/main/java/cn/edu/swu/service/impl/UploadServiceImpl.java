@@ -10,7 +10,8 @@ public class UploadServiceImpl implements UploadService {
 
     @Override
     public boolean uploadFile(String filePath, MultipartFile uploadFile)  {
-       UploadUtil.uploadFiles(uploadFile,filePath);
+        System.out.println("上传");
+       UploadUtil.uploadFile(uploadFile,filePath);
         return true;
     }
 

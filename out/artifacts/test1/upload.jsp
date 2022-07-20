@@ -11,9 +11,18 @@
     <title>Title</title>
 </head>
 <body>
+多文件上传
 <form action="${pageContext.request.contextPath}/upload" method="post" enctype="multipart/form-data">
     文件<input type="file" name="uploadFiles"><br/>
     文件<input type="file" name="uploadFiles"><br/>
+    <input type="submit">
+</form>
+<br/>
+<br/>
+<br/>
+单文件上传
+<form action="${pageContext.request.contextPath}/upload1" method="post" enctype="multipart/form-data">
+    文件<input type="file" name="uploadFile"><br/>
     <input type="submit">
 </form>
 </body>

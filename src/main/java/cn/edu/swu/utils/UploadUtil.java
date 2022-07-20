@@ -20,39 +20,27 @@ public class UploadUtil {
         return true;
     }
 
-    private static List<String> suffixList;
 
     public static boolean uploadFiles(MultipartFile[] multipartFiles, String path) {
-
-        for (MultipartFile uploadFile : multipartFiles) {
-            String suffix = getSuffix(uploadFile);
-            if (!judgeSuffix(suffix))
-                return false;
-            File file = new File(path + "/" + suffix, uploadFile.getOriginalFilename());
-            if (!file.getParentFile().exists())
-                (file.getParentFile()).mkdirs();
-            try {
-                System.out.println(file.getParentFile());
-                uploadFile.transferTo(file);
-            } catch (IOException e) {
-                e.printStackTrace();
-                return false;
-            }
+        for (MultipartFile multipartFile : multipartFiles) {
+            uploadFile(multipartFile, path);
         }
         return true;
     }
 
-    public static boolean uploadFiles(MultipartFile uploadFile, String Path) {
-        File file = new File(Path);
+    public static boolean uploadFile(MultipartFile uploadFile, String path) {
         String suffix = getSuffix(uploadFile);
         if (!judgeSuffix(suffix))
             return false;
+        File file = new File(path + "/" + suffix, uploadFile.getOriginalFilename());
+        if (!file.getParentFile().exists())
+            (file.getParentFile()).mkdirs();
         return upload(uploadFile, file);
-
     }
 
     private static boolean upload(MultipartFile uploadFile, File file) {
         try {
+            System.out.println(file.getAbsolutePath());
             uploadFile.transferTo(file);
         } catch (IOException e) {
             e.printStackTrace();
