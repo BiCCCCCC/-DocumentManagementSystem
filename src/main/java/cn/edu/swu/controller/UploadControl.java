@@ -1,11 +1,13 @@
 package cn.edu.swu.controller;
+import cn.edu.swu.service.impl.Upload1;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 
-import java.io.File;
 import java.io.IOException;
 
 @Controller
@@ -15,13 +17,9 @@ public class UploadControl {
     @RequestMapping(value = "/upload")
     @ResponseBody
     public void upload(String username, MultipartFile[] uploadFiles) throws IOException {
-        System.out.println(username);
-        System.out.println(uploadFiles[0].getOriginalFilename());
-        File file = new File("E:\\springtmp\\" + uploadFiles[0].getOriginalFilename());
-        uploadFiles[0].transferTo(file);
-        System.out.println(uploadFiles[1].getOriginalFilename());
-        file = new File("E:\\springtmp\\" + uploadFiles[1].getOriginalFilename());
-        uploadFiles[1].transferTo(file);
+        ApplicationContext app=new ClassPathXmlApplicationContext("applicationContext.xml");
+        Upload1 upload=app.getBean(Upload1.class);
+        upload.uploadFiles(upload.getTxtPath(),upload.getPicPath(),uploadFiles);
     }
 
 }
