@@ -12,7 +12,6 @@
 </head>
 <body>
 <form action="${pageContext.request.contextPath}/upload" method="post" enctype="multipart/form-data">
-    名称<input type="text" name="username"><br/>
     文件<input type="file" name="uploadFiles"><br/>
     文件<input type="file" name="uploadFiles"><br/>
     <input type="submit">

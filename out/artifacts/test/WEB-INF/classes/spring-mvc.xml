@@ -6,6 +6,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
 http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
     <context:component-scan base-package="cn.edu.swu">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
@@ -13,9 +14,7 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
     <beans>
 
         <!--        mvc注解驱动-->
-        <mvc:annotation-driven conversion-service="conversionService"/>
-        <!--开放js资源的访问-->
-        <mvc:resources mapping="/js/**" location="/js/"/>
+        <mvc:annotation-driven/>
 
         <mvc:default-servlet-handler/>
 
