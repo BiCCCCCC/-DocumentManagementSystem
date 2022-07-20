@@ -5,10 +5,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:property-placeholder location="classpath:path.properties"/>
+    <context:property-placeholder location="classpath:file.properties"/>
 
-    <bean id="upload" class="cn.edu.swu.service.impl.UploadImpl">
-        <property name="txtPath" value="${path.txt}"/>
-        <property name="picPath" value="${path.pic}"/>
-    </bean>
+
 </beans>
