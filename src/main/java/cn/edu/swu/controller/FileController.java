@@ -1,6 +1,8 @@
 package cn.edu.swu.controller;
 
+
 import cn.edu.swu.service.impl.DownloadServiceImpl;
+import cn.edu.swu.service.impl.FileServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
@@ -9,24 +11,23 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.io.*;
-
+import java.io.IOException;
+import java.util.List;
 
 @Controller
-@RequestMapping("/download")
-public class DownloadController {
+@RequestMapping("/file")
+public class FileController {
 
     @Autowired
-    private DownloadServiceImpl downloadService;
+    private FileServiceImpl fileService;
     @Value("${download.path}")
-    private String downloadPath;
+    private String filePath;
 
 
-    @RequestMapping("/{filename}.{suffix}")
-    public ResponseEntity<byte[]> download(@PathVariable String filename,@PathVariable String suffix) throws IOException {
-        ResponseEntity<byte[]> entity = downloadService.downloadService(downloadPath,filename+"."+suffix);
-        return entity;//返回
+    @RequestMapping("/getAllFilenames")
+    @ResponseBody
+    public List<String> getAllFilenames()  {
+        return fileService.getFilenames(filePath);
     }
-
 
 }

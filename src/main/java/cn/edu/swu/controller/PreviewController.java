@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.io.IOException;
 
 @Controller
+@RequestMapping("/preview")
 public class PreviewController {
 
 
@@ -19,7 +20,7 @@ public class PreviewController {
     @Value("${preview.path}")
     private String previewPath;
 
-    @RequestMapping(value = "/preview/{filename}.{suffix}")
+    @RequestMapping(value = "/{filename}.{suffix}")
     public ResponseEntity<byte[]> download(@PathVariable String filename, @PathVariable String suffix) throws IOException {
         ResponseEntity<byte[]> entity = previewService.previewService(previewPath, filename + "." + suffix);
         return entity;//返回
